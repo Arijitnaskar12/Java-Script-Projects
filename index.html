@@ -1,24 +1,189 @@
-<!-- @format -->
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  </head>
-  <body>
-    <button onclick="PrintStudentswithMap()">
-      Console log Students with Map
-    </button>
-    <button onclick="PrintStudentsbyForEach()">
-      Console log Students with foreach
-    </button>
-    <button onclick="addData()">Console New Data with 4th Student</button>
-    <button onclick="removeFailedStudent()">Remove Failed Student</button>
-    <button onclick="concatenateArray()">concatenateArray</button>
+    <style>
+        *{
+            margin-left:30px;
+     }
+     body{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+     }
+            .container{
+                width:1000px;
+                height:700px;
+                background-color: black;
+                border:5px solid red;
+                color:white;
+            }
+            .container #prof{
+                background-color: black;
+                color:white;
+                padding:10px;
+                font-size:14px;
+                margin-top:28px;
+                margin-bottom:20px;
+            }
+            .container #text{
+                margin-top:60px;
+                margin-bottom:25px;
+            }
+            .container #btn{
+                background-color: white;
+                width:150px;
+                height:40px;
+                padding:10px;
+                border-width:0px;
+                font-size:18px;
+                margin-bottom:50px;
+                margin-left:-10px;
+            }
+            .container .info{
+                display:flex;                               
+                margin-left:-30px;
+                margin-top:20px;
+            }
+          .container .info .ip{
+                background-color: black;;
+            }
+            input[type="text"] {
+                padding:0px;
+                margin:20px;
+            }
+            input{
+        
+                border:1px solid white;
+                margin:20px;
+                border-radius:7px;
+                width:250px;
+                height:30px;
+                color:white;
+            }
+            #arrayprint .newInput{
+                background-color: black;
+                color:white;
+                width:300px;
+                height:30px;
+                border: 2px solid white;
+                border-radius:7px;
+                margin:5px;
+            }
 
-    <script src="./script.js"></script>
-  </body>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="text">Filter ui cards via their profession.</div>
+        <select name="profession" id="prof">
+            <option value="Profession" id="profession"  selected>Profession</option>
+            <option value="Developer">Developer</option>
+            <option value="Admin">Admin</option>
+        </select>
+        <div id="arrayprint" class="same">
+        
+        </div>
+        <div class="button"> <button onclick="showElement()" type="submit" id="btn">Filter</button></div>
+       <div class="text2">Add a new user</div>
+<div class="info"> 
+    <div>
+        <label for="name">Enter Name</label>
+        <input type="text" class="ip" id="name">
+    </div>
+    <div> <label for= "profession">Enter Profession</label>
+        <input type="text"class="ip" id="profes">
+    </div>
+   <div><label for="age">Enter Age</label>
+    <input type="tel"class="ip" id="age">
+</div>    
+</div>
+<div class="buttn"> <button  onclick="addedToArray()" type="submit" id="btn">Add User</button></div>
+
+    </div>
+    
+    <script>
+        let arr=[
+        {
+            id:1,
+            name:"john",
+            age:"18",
+            profession:"developer"
+        },
+        {
+            id:2,
+            name:"jack",
+            age:"20",
+            profession:"developer"
+        },
+        {
+            id:3,
+            name:"karen",
+            age:"19",
+            profession:"admin"
+        },
+        ];
+        let print=document.getElementById("arrayprint");
+        function showElement(){
+           
+            let keyPressed=document.querySelector("#prof");
+            output = keyPressed.options[keyPressed.selectedIndex].value;
+            console.log(output);
+        if(output==="Profession")
+        {
+            alert("Please Select a profession");
+        }else if(output==="Developer")
+        {
+            for(let i=0;i<arr.length;i++)
+            {
+                if(arr[i].profession==="developer")
+                {
+                    var x = document.createElement("div");
+                    x.className="newInput";
+                     x.innerText=arr[i].id+"."+"  "+"Name:"+arr[i].name+" "+"Profession:"+arr[i].profession+"  "+"age:"+arr[i].age;
+                     print.append(x);
+                }
+            }
+          
+
+
+        }else{
+            for(let i=0;i<arr.length;i++)
+            {
+                if(arr[i].profession==="admin")
+                {
+                    var x = document.createElement("div");
+                    x.className="newInput";
+                    x.innerText=arr[i].id+"."+"  "+"Name:"+arr[i].name+" "+"Profession:"+arr[i].profession+"  "+"age:"+arr[i].age;
+                     print.append(x);
+                }
+            }
+           
+        }
+
+
+        }
+        function addedToArray(){
+            let name_1=document.getElementById("name").value;
+            let age_1=document.getElementById("age").value;
+            let profession_1=document.getElementById("profes").value;
+            console.log(profession_1);
+            let obj={
+                id:arr.length,
+                name:name_1,
+                age:age_1,
+                profession:profession_1
+
+            };
+            arr.push(obj);
+            document.getElementById("name").value="";
+            document.getElementById("age").value="";
+            document.getElementById("profes").value="";
+
+        }
+    </script>
+</body>
 </html>
