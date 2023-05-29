@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        button{
+            background-color: blue;
+            font-size: 28px;
+            padding:20px 10px;
+            color:white;
+            border:none;
+            margin-left:20px;
+            margin-top:0px;
+            font-weight: bold;
+        }
+        button:hover{
+            background-color: rgb(64, 64, 122);
+        }
+        /* .modal-container{
+            background-color: white;
+            /* position:relative; */
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */ 
+
+        /* } */
+        body{
+            background-color: rgb(201, 199, 199)
+        }
+        .modal{
+            background-color: white ;
+            padding:30px;
+            width:400px;
+            border-radius: 10px;
+            position:absolute;
+            top: 250px;
+            left:500px;
+            display:none;
+        }
+        @keyframes transition {
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+        @keyframes reverse-transition{
+            from{
+                opacity:1;
+            }
+            to{
+                opacity:0;
+            }
+        }
+        span{
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="modal-container"> -->
+        <div class="modal">
+            <span class="material-icons close">close</span>
+            <b>Modal title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, necessitatibus quia deleniti aut nihil, rem animi blanditiis neque maxime voluptatibus optio a, totam labore minus.</p>
+        </div>
+    <!-- </div> -->
+    <button type="submit">Open Modal</button>
+    <script>
+        let buttonElement=document.getElementsByTagName("button")[0];
+        let modalElement=document.getElementsByClassName("modal")[0];
+        let closeButton=document.getElementsByClassName("close")[0];
+        closeButton.addEventListener("click",hideModal)
+        function openModal(event){
+            modalElement.style.display="block";
+            modalElement.style.animation="transition 0.8s linear";
+        }
+        function hideModal(){
+            modalElement.style.animation="reverse-transition 0.8s linear";
+            setTimeout(()=>{
+                modalElement.style.display="none";
+            },800);
+          
+
+        }
+        buttonElement.addEventListener("click",openModal);
+    </script>
+</body>
+</html>
