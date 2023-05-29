@@ -1,0 +1,44 @@
+.user{
+    display:flex;
+    justify-content:space-between;
+    width:400px;
+    box-shadow: 2px 2px 4px gray;
+    padding:20px 10px;
+    border-radius: 5px;
+    align-items: center;
+}
+img{
+    width: 40px;
+    height:40px;
+    border-radius: 50%;
+}
+.user .left{
+    display:flex;
+    /* justify-content:center; */
+    align-items: center;
+    gap: 20px;
+}
+.close{
+    color:red;
+    border: 1px solid red;
+}
+.done{
+    color:green;
+    border: 1px solid green;
+}
+span{
+    padding:5px;
+    cursor:pointer;
+    border-radius: 50%;
+}
+span:hover{
+    background-color:gray;
+}
+section{
+    display:grid;
+    gap: 20px;
+    grid-template-columns:repeat(3, 31%);
+}
+section>div{
+    box-shadow: 2px 2px 10px rgb(233, 228, 228);
+}
