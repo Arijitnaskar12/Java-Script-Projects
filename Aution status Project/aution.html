@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    header{
+        background-color: #333333;
+        color:white;
+        padding:10px 0; 
+        width:100%;
+    }
+.card{
+    border:2px solid red;
+    padding:20px;
+
+}
+.price{
+    float:right;
+}
+.card-container{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:20px;
+}
+.top{
+    
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid gray;
+}
+.status{
+    display:flex;
+    flex-flow:column wrap;
+}
+.status-chip{
+    color:white;
+    padding:5px;
+    border-radius:5px;;
+}
+.approved{
+    background-color: royalblue;
+    color:white;
+}
+.completed{
+    background-color: green;
+    color:white;
+}
+.pending{
+    background-color: yellow;
+}
+.cancelled{
+    background-color: red;
+    color:white;
+}
+.case-number{
+    color: #a5a5a5;
+}
+.bottom{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+@media (max-width:1000px) and (min-width:800px)
+{
+    .card-container{
+        grid-template-columns: repeat(3,1fr);
+    }  
+}
+@media (max-width:800px) and (min-width:500px)
+{
+    .card-container{
+        grid-template-columns: repeat(2,1fr);
+    }  
+}
+@media (max-width:500px)
+{
+    .card-container{
+        grid-template-columns: repeat(1,1fr);
+    }  
+}
+
+</style>
+<body>
+    <header>
+        <h1>Auction Status App</h1>
+    </header>
+    <section class="card-container">
+    </section>    
+    <script>
+        //  <div class="card">
+        //         <div class="top">
+        //             <div class="status">
+        //             <b class="status-chip">APPROVED</b>
+        //             <span class="case-number">SK1234MN</span>
+        //             </div>
+        //             <div class="date">May 23,2023,05:30:25 PM</div>
+        //         </div>
+        //         <div class="bottom">
+        //             <b class="from-location">Bangaluru,spike lake</b>
+        //             <span class="to-location">4/177A,lalbagan,dumdum,Kolkata</span>
+        //         </div>
+        //         <span class="price">₹100</span>
+        // </div>
+        let cardsContainer=document.getElementsByClassName("card-container")[0];
+        function addUserOnUI(resultList){
+            for(let i=0;i<resultList.length;i++)
+            {
+                let card=resultList[i];
+              let innerCard=`<div class="top">
+                    <div class="status">
+                    <b class="status-chip ${card.status.toLowerCase()}">${card.status}</b>
+                    <span class="case-number">${card.caseNumber}</span>
+                    </div>
+                    <div class="date">${card.date}</div>
+                </div>
+                <div class="bottom">
+                    <b class="from-location">${card.fromLocation}</b>
+                    <span class="to-location">${card.toLocation}</span>
+                </div>
+                <span class="price">${card.fare}</span>`;
+                let cardContainer=document.createElement("div");
+                cardContainer.className="card";
+                cardContainer.innerHTML=innerCard;
+                cardsContainer.append(cardContainer);
+
+            }
+        }
+        async function fetchData(){
+            try{
+                let response= await fetch(`https://gauravgitacc.github.io/postAppData/auctionData.json`);
+            
+            let data= await response.json();
+            addUserOnUI(data);
+            } catch(error)
+            {
+                console.log("Something went wrong");
+            }
+        }
+        fetchData();
+
+    </script>
+</body>
+</html>
