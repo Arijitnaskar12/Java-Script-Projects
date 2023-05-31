@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./hot.png" type="image/x-icon">
+    <title>Temperature Converter</title>
+    <style>
+        body{
+            background-color:aquamarine;
+            padding:10px 20px;
+            margin:20px 30px;
+            /* transform: translate(30%,0%); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        .container{
+            background-color:#ffe923;
+            /* position:absolute;
+            left:470px; */
+            max-width:500px;
+            text-align: center;
+            height:500px;
+            display:flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;        }
+        h1{
+            font-size: 60px;
+            color:rgb(137, 45, 45);
+        }
+        input{
+            padding:10px;
+            border-radius: 10px;
+            margin:5px;
+            width:250px;
+            font-weight:bold;
+            font-size:25px;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="container">
+            <div class="heading">
+                <h1>Temperature Converter</h1>
+                </div>
+                <div class="temp">
+                    <input type="number" id="left"  placeholder="Degree in Celcius">
+                    <input type="number" id="right"  placeholder="In Fahrenheit">
+                </div>
+                
+            </div>
+        </div>
+   <script>
+    let cel=document.getElementById("left");
+    let far=document.getElementById("right");
+    cel.addEventListener("input",celTofar);
+    function celTofar(){
+    
+        
+        let f=(parseFloat(cel.value)*9/5)+32;
+        far.value=parseFloat(f.toFixed(4));
+        
+    };
+    far.addEventListener("input",farTocel);
+    function farTocel(){
+    
+        let c=(parseFloat(far.value)-32)*(5/9);
+        cel.value=parseFloat(c.toFixed(4));
+    };
+   </script>
+</body>
+</html>
