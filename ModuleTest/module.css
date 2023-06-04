@@ -1,0 +1,37 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    background-color: rgb(86, 255, 162);        
+}
+#mar{
+    font-size:44px;
+    color:rgb(254, 252, 252);
+}
+/* body{
+    /* background-image: url(https://franchiseindia.s3.ap-south-1.amazonaws.com/uploads/content/fi/art/5feb2c2f49aff.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover; */
+/* } */ 
+img{
+    height:70px;
+    width:70px;
+    border-radius: 50%;
+}
+#card{
+    width:100vw;
+    font-size:34px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding:10px 20px;
+    display :flex;
+    justify-content:space-around;
+    align-items:center;
+    margin:10px;
+    padding:10px 20px;
+}
+#btn{
+    background-color: rgb(21, 252, 21);
+    font-size: 20px;
+    padding:10px;
+    border-radius: 10px;
+}
